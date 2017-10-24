@@ -1,0 +1,8 @@
+---
+- name:  Deploy zabbix agent to client
+  hosts: web 
+  remote_user: root
+
+  roles:
+    - install_zabbix_agent 
+

@@ -1,0 +1,28 @@
+---
+# uninstall zabbix agent
+- name: Stop zabbix agent
+  service: name=zabbix-agent state=stopped
+  tags:
+      - stopzabbixagent
+
+- name: Test whether the tmp file exists
+  command: ls /tmp/{{ ZBX_repo }}
+  register: result
+  tags:
+      - testtmpfile
+
+- name: Delete tmp file
+  command: rm -f /tmp/{{ ZBX_repo }}
+  when: result.stdout == 'true'
+  tags:
+      - deletetmpfile
+
+- name: Uninstall repo rpm
+  command: rpm -e zabbix-release-3.4-2.el7
+  tags:
+      - uninstallrepo
+
+- name: Uninstall zabbix-agent
+  yum: name=zabbix-agent state=absent 
+  tags:
+      - uninstallzabbixagent

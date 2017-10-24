@@ -1,0 +1,27 @@
+---
+# deploy zabbix agent
+- name: Copy zabbix repo file
+  copy: src={{ ZBX_repo }} dest=/tmp/{{ ZBX_repo }} mode=644
+  tags:
+      - ZBX-copyrepo
+
+- name: Install repo
+  command: rpm -ivh /tmp/{{ ZBX_repo }}
+  tags:
+      - ZBX-installrepo
+
+- name: Yum install zabbix agent
+  yum: name=zabbix-agent state=present
+  tags:
+      - ZBX-installagent
+
+- name: Configure zabbix-agentd conf
+  template: src=zabbix_agentd.conf.j2 dest=/etc/zabbix/zabbix_agentd.conf mode=0644
+  notify: restart zabbix-agent
+  tags:
+      - ZBX-config
+
+- name: Start zabbix-agent
+  service: name=zabbix-agent state=started enabled=yes
+  tags:
+      - ZBX-startzabbixagent

@@ -1,0 +1,8 @@
+---
+- name:  uninstall zabbix agent
+  hosts: web 
+  remote_user: root
+
+  roles:
+    - delete_zabbix_agent 
+

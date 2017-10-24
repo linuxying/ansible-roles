@@ -1,0 +1,10 @@
+PidFile=/var/run/zabbix/zabbix_agentd.pid
+LogFile=/var/log/zabbix/zabbix_agentd.log
+LogFileSize=0
+LogRemoteCommands=1
+Server={{ ZBX_server }}
+ListenIP=0.0.0.0
+ServerActive={{ ZBX_server_active }}
+Hostname={{ ansible_hostname }}
+Timeout=15
+Include=/etc/zabbix/zabbix_agentd.d/*.conf

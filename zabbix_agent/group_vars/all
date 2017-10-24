@@ -1,0 +1,5 @@
+---
+# zabbix settings
+ZBX_server: 10.0.0.6
+ZBX_server_active: 10.0.0.6:10051
+ZBX_repo: zabbix-release-3.4-2.el7.noarch.rpm
