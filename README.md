@@ -1,4 +1,4 @@
-[# 使用ansible来实现zabbix客户端的自动安装](http://note.youdao.com/)
+[# 使用ansible来实现zabbix客户端的自动安装](https://github.com/linuxying/ansible-roles)
 
 |  名称 |版本信息   |
 | ------------ | ------------ |
